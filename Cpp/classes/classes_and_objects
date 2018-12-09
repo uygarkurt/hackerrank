@@ -1,0 +1,24 @@
+class Student
+{
+    public:
+        int scores[5];
+        void input()
+        {
+            int s, counter=0;
+            while(cin>>s)
+            {
+                scores[counter]=s;
+                counter++;
+            }
+        }
+        int calculateTotalScore()
+        {
+            int sum=0, counter=0;
+            while(counter<5)
+            {
+                sum+=scores[counter];
+                counter++;
+            }
+            return sum;
+        }
+};
