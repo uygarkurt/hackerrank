@@ -1,0 +1,68 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#include <stdio.h>
+#include <string>
+class Person {
+protected:
+  string name;
+  int age;
+  public:
+    virtual void getdata()
+    {
+        cin>>name; scanf("%d", &age);
+    }
+    virtual void putdata()
+    {
+        cout<<name<<" "; printf("%d\n", age);
+    }
+};
+class Professor : public Person {
+private:
+  int publications;
+  int cur_id;
+  static int c;
+
+public:
+  Professor() { cur_id = ++c; }
+  virtual void getdata() {
+    cin >> name;
+    scanf("%d%d", &age, &publications);
+  }
+  virtual void putdata() {
+    cout << name << " ";
+    printf("%d %d %d\n", age, publications, cur_id);
+  }
+};
+int Professor::c = 0;
+
+class Student : public Person {
+private:
+  int mark[6];
+  int cur_id;
+  static int c;
+  int sum;
+
+public:
+      Student() { cur_id = ++c; }
+  virtual void getdata() {
+    cin >> name;
+    scanf("%d", &age);
+    for (int i = 0; i < 6; i++) 
+      scanf("%d", mark + i);
+  }
+  virtual void putdata() {
+    cout << name << " ";
+    sum = 0;
+    for (auto x : mark)
+      sum += x;
+    printf("%d %d %d\n", age, sum, cur_id);
+  }
+};
+
+int Student::c = 0;
+
+int main(){
