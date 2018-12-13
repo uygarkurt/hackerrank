@@ -1,0 +1,50 @@
+// Complete the reverse function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+SinglyLinkedListNode* reverse(SinglyLinkedListNode* head) {
+    typedef SinglyLinkedListNode list;
+    list *temp1, *temp2, *temp3;
+    temp1=head; temp2=head; temp3=head;
+    int counter=0;
+    while(temp3!=nullptr)
+    {
+        counter++;
+        temp3=(*temp3).next;
+    }
+    temp3=head;
+    if(counter==1)
+    {
+        return head;
+    }
+    else if(counter==2)
+    {
+        temp2=(*head).next;
+        (*temp2).next=temp3;
+        return temp2;
+    }
+    else
+    {
+        temp1=nullptr;
+        temp2=nullptr;
+        temp3=head;
+        while((*temp3).next!=nullptr)
+        {
+           temp2=temp3;
+            temp3=(*temp3).next;
+            (*temp2).next=temp1;
+            temp1=temp2;
+        }
+        (*temp3).next=temp2;
+        return temp3;
+    }
+    return temp1;
+
+}
