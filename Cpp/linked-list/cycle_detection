@@ -1,0 +1,28 @@
+// Complete the has_cycle function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+bool has_cycle(SinglyLinkedListNode* head) {
+    typedef SinglyLinkedListNode list;
+    list *temp1=head, *temp2=head;
+    if(head==nullptr)
+    {
+        return false;
+    }
+    while(temp1!=nullptr && (*temp1).next!=nullptr)
+    {
+       temp1=(*temp1).next; temp1=(*temp1).next;
+        temp2=(*temp2).next;
+        if(temp1==temp2)
+            return true;
+    }
+    return false;
+
+}
