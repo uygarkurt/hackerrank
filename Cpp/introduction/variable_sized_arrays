@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    vector<vector<int>> vec;
+    int a, b;
+    cin>>a>>b;
+    for(int i=0; i<a; i++)
+    {
+        int x;
+        cin>>x;
+        vector<int>temp(x);
+        for(int k=0; k<x; k++)
+        {
+            int y;
+            cin>>y;
+            temp[k]=y;
+        }
+        vec.push_back(temp);
+    }
+    for(int i=0; i<b; i++)
+    {
+        int x, y;
+        cin>>x>>y;
+        cout<<vec[x][y]<<"\n";
+    }
+    return 0;
+}
