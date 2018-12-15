@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void staircase(int n) 
+{
+    int counter1=1, counter2=1;
+   
+    while(counter1<=n)
+    {
+        for(int i=0; i<n-counter1; i++)
+        {
+            cout<<" ";
+        }
+        for(int i=counter1; i>0; i--)
+        {
+            if(i==1)
+            {
+                cout<<"#"<<endl;
+            }
+            else
+            {
+                cout<<"#";
+            }
+        }
+        counter1++;
+    }
+
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    staircase(n);
+
+    return 0;
+}
