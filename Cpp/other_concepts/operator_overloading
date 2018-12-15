@@ -1,0 +1,12 @@
+class Matrix
+{   
+public:
+    vector<vector<int>>a;
+    Matrix operator+(const Matrix&mat)
+    {
+        for(int m=0; m<mat.a.size(); m++)
+            for(int n=0; n<mat.a[0].size(); n++)
+                (*this).a[m][n]=(*this).a[m][n]+mat.a[m][n];
+        return *this;
+    }
+};
