@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int formingMagicSquare(vector<vector<int>> s) {
+     int counter1=0, counter2=0;
+    vector<int> mat;
+    vector<int> vec1={8,1,6,3,5,7,4,9,2};
+    vector<int> vec2={6,1,8,7,5,3,2,9,4};
+    vector<int> vec3={8,3,4,1,5,9,6,7,2};
+    vector<int> vec4={4,3,8,9,5,1,2,7,6};
+    vector<int> vec5={6,7,2,1,5,9,8,3,4};
+    vector<int> vec6={2,7,6,9,5,1,4,3,8};
+    vector<int> vec7={4,9,2,3,5,7,8,1,6};
+    vector<int> vec8={2,9,4,7,5,3,6,1,8};
+    vector<vector<int>> vec9;
+    vector<int> res;
+    vec9.push_back(vec1);  vec9.push_back(vec2);  vec9.push_back(vec3);  vec9.push_back(vec4);
+     vec9.push_back(vec5);  vec9.push_back(vec6);  vec9.push_back(vec7);  vec9.push_back(vec8);
+
+    while(counter1<s.size())
+    {
+        counter2=0;
+        while(counter2<s[0].size())
+        {
+            mat.push_back(s[counter1][counter2]);
+            counter2++;
+        }
+        counter1++;
+    }
+    int sum=0;
+    counter1=0;
+    counter2=0;
+    while(counter1<vec9.size())
+    {
+        while(counter2<mat.size())
+        {
+            sum+=abs(mat[counter2]-vec9[counter1][counter2]);
+            counter2++;
+        }
+        res.push_back(sum);
+        sum=0;
+        counter2=0;
+        counter1++;
+    }
+    counter1=0;
+    while(counter1<res.size())
+    {
+        cout<<res[counter1]<<"\n";
+        counter1++;
+    }
+   sort(res.begin(), res.end());
+    cout<<res[0]<<"\n";
+    return res[0];
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    vector<vector<int>> s(3);
+    for (int i = 0; i < 3; i++) {
+        s[i].resize(3);
+
+        for (int j = 0; j < 3; j++) {
+            cin >> s[i][j];
+        }
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    int result = formingMagicSquare(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
