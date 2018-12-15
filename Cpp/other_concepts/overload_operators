@@ -1,0 +1,11 @@
+Complex operator+(Complex num1, const Complex &num)
+    {
+        num1.a=num1.a+num.a;
+        num1.b=num1.b+num.b;
+        return num1;
+    }
+ostream &operator<<(ostream&os, const Complex &num)
+    {
+        os<<num.a<<"+i"<<num.b<<"\n";
+        return os;
+    }
