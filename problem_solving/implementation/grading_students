@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<int> gradingStudents(vector<int> grades) {
+   
+    vector<int> returner;
+    int counter1=0;
+    while(counter1<grades.size())
+    {
+        if(grades[counter1]>=38)
+        {
+            if((grades[counter1]+2)%5==0)
+            {
+                grades[counter1]=grades[counter1]+2;
+            }
+             else if((grades[counter1]+1)%5==0)
+            {
+                grades[counter1]=grades[counter1]+1;
+            }
+            returner.push_back(grades[counter1]);
+        }
+        else
+        {
+            returner.push_back(grades[counter1]);
+        }
+        counter1++;
+    }
+    return returner;
+
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int n;
+    cin >> n;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    vector<int> grades(n);
+
+    for (int grades_itr = 0; grades_itr < n; grades_itr++) {
+        int grades_item;
+        cin >> grades_item;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        grades[grades_itr] = grades_item;
+    }
+
+    vector<int> result = gradingStudents(grades);
+
+    for (int result_itr = 0; result_itr < result.size(); result_itr++) {
+        fout << result[result_itr];
+
+        if (result_itr != result.size() - 1) {
+            fout << "\n";
+        }
+    }
+
+    fout << "\n";
+
+    fout.close();
+
+    return 0;
+}
