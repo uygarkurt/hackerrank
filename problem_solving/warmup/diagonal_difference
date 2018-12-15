@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+#include <cmath>
+
+using namespace std;
+
+int diagonalDifference(vector<vector<int>> vec) {
+    int counter=0, counter1=0 , d1=0, d2=0, sum=0;
+    
+    while(counter<vec.size())
+    {
+        d1+=vec[counter][counter];
+        counter++;
+    }
+    cout<<d1<<endl;
+    counter1=vec.size()-1;
+    counter=0;
+    while(counter1>=0)
+    {
+        d2+=vec[counter1][counter];
+        counter1--;
+        counter++;
+    }
+    cout<<d2<<endl;
+    sum=abs(d1-d2);
+    return sum;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int n;
+    cin >> n;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    vector<vector<int>> arr(n);
+    for (int i = 0; i < n; i++) {
+        arr[i].resize(n);
+
+        for (int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    int result = diagonalDifference(arr);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
